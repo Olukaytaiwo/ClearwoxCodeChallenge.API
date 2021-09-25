@@ -1,0 +1,10 @@
+﻿using System;
+
+namespace taiwo_clearwox_backend_codechalleneg.Models
+{
+    public class Department
+    {
+        public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
+    }
+}
