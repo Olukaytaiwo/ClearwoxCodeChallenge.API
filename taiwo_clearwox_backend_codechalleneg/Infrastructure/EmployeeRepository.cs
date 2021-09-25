@@ -27,7 +27,7 @@ namespace taiwo_clearwox_backend_codechalleneg.Infrastructure
         public async Task<Employee> GetEmployee(int employeeId)
         {
             var result = await appDbContext.Employees
-               .Include(e => e.Department)
+               //.Include(e => e.DepartmentId)
                .FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
 
             if (result != null)

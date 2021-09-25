@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,15 +17,17 @@ namespace taiwo_clearwox_backend_codechalleneg.Infrastructure
             this.appDbContext = appDbContext;
         }
 
-        public IEnumerable<Department> GetDepartments()
+        public async Task<List<Department>> GetDepartments()
         {
-            return appDbContext.Departments;
+            var result = await appDbContext.Departments.ToListAsync();
+            return result;
+            //return await appDbContext.Departments;
         }
 
-        public Department GetDepartment(int departmentId)
+        public async Task<Department> GetDepartment(int departmentId)
         {
             var results = appDbContext.Departments.
-                FirstOrDefault(d => d.DepartmentId == departmentId);
+                FirstOrDefault(d => d.Id == departmentId);
             return results;
         }
 

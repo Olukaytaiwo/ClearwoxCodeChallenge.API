@@ -8,7 +8,7 @@ namespace taiwo_clearwox_backend_codechalleneg.Interfaces
 {
     public interface IDepartmentRepository
     {
-        IEnumerable<Department> GetDepartments();
-        Department GetDepartment(int departmentId);
+        Task<List<Department>>GetDepartments();
+        Task<Department>GetDepartment(int departmentId);
     }
 }

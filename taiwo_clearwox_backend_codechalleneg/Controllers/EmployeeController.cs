@@ -93,7 +93,7 @@ namespace taiwo_clearwox_backend_codechalleneg.Controllers
                     return BadRequest();
                 }
 
-                var emp = employeeRepository.GetEmployeeByEmail(employee.Email);
+                var emp = await employeeRepository.GetEmployeeByEmail(employee.Email);
                 if (emp == null)
                 {
                     var request = await employeeRepository.AddEmployee(employee);
@@ -110,7 +110,7 @@ namespace taiwo_clearwox_backend_codechalleneg.Controllers
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
@@ -138,7 +138,7 @@ namespace taiwo_clearwox_backend_codechalleneg.Controllers
                     return await employeeRepository.UpdateEmployee(employee);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error Updating data on the database");
